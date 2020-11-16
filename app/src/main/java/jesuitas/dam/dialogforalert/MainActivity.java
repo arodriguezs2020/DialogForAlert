@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
                 DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // User clicked OK button.
-                        Toast.makeText(getApplicationContext(), R.string.ok_toast,
-                                Toast.LENGTH_SHORT).show();
+                        displayToast(getString(R.string.press_ok));
+
                     }
                 });
         myAlertBuilder.setNegativeButton(R.string.cancel_button, new
                 DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // User cancelled the dialog.
-                        Toast.makeText(getApplicationContext(), R.string.cancel_toast,
-                                Toast.LENGTH_SHORT).show();
+                        displayToast(getString(R.string.press_cancel));
+
                     }
                 });
 
@@ -56,11 +56,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int i) {
                 String band;
                 band = getResources().getStringArray(R.array.array)[i];
-                //Toast toast = Toast.makeText(band,)
+                displayToast(band);
             }
         });
 
         myAlertBuilder.show();
 
+    }
+
+    public void displayToast(String text) {
+        Toast.makeText(getApplicationContext(), text,
+                Toast.LENGTH_SHORT).show();
     }
 }
